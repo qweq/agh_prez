@@ -86,4 +86,21 @@ class Base {
             <script type="text/javascript" src="include/javascript/jquery/DataTables/datatables.min.js"></script>
         ';
     }
+
+    public function UserAdd($user_array) {
+        if (!is_array($user_array)) return false;
+
+        if (!isset($user_array['u_username']) || $user_array['u_username'] === '') return false;
+        if (!isset($user_array['u_type'])) $user_array['u_type'] = 'user';
+
+        return $this->mysqli->InsertRow($this::db, 'user', $user_array);
+    }
+
+    public function UserEdit($u_id, $user_array) {
+        if (!is_array($user_array)) return false;
+
+        if (isset($user_array['u_password'])) $user_array['u_password'] = password_hash($user_array['u_password'], 1);
+
+        return $this->mysqli->UpdateRow($this::db, 'user', $u_id, $user_array);
+    }
 }
