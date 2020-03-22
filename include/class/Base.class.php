@@ -84,6 +84,9 @@ class Base {
             <script type="text/javascript" src="include/javascript/jquery/jquery-3.4.1.min.js"></script>
             <link rel="stylesheet" type="text/css" href="include/javascript/jquery/DataTables/datatables.min.css"/>
             <script type="text/javascript" src="include/javascript/jquery/DataTables/datatables.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+            <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
         ';
     }
 
