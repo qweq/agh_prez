@@ -84,6 +84,30 @@ class Base {
             <script type="text/javascript" src="include/javascript/jquery/jquery-3.4.1.min.js"></script>
             <link rel="stylesheet" type="text/css" href="include/javascript/jquery/DataTables/datatables.min.css"/>
             <script type="text/javascript" src="include/javascript/jquery/DataTables/datatables.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+            <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
         ';
+    }
+
+    public function UserAdd($user_array) {
+        if (!is_array($user_array)) return false;
+
+        if (!isset($user_array['u_username']) || $user_array['u_username'] === '') return false;
+        if (!isset($user_array['u_type'])) $user_array['u_type'] = 'user';
+
+        return $this->mysqli->InsertRow($this::db, 'user', $user_array);
+    }
+
+    public function UserEdit($u_id, $user_array) {
+        if (!is_array($user_array)) return false;
+
+        if (isset($user_array['u_password'])) $user_array['u_password'] = password_hash($user_array['u_password'], 1);
+
+        return $this->mysqli->UpdateRow($this::db, 'user', $u_id, $user_array);
+    }
+
+    public function UserDelete($u_id) {
+        return $this->mysqli->UpdateRow($this::db, 'user', $u_id, array('u_delete' => 'NOW()'));
     }
 }

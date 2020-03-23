@@ -41,7 +41,9 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
+    color: white;
     -webkit-transition: background-color 0.3s;
     -moz-transition: background-color 0.3s;
     -ms-transition: background-color 0.3s;
@@ -51,4 +53,37 @@ a:hover {
 
 .choc-button:hover {
     background-color: #f78123;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+.input-container input, .input-container select {
+    width: 75%;
+    padding: 6px;
+}
+.input-container label {
+    width: auto;
+}
+
+.icon-8 {
+    width: 8px;
+    height: 8px;
+    padding: 1px;
+}
+.icon-12 {
+    width: 12px;
+    height: 12px;
+    padding: 2px;
+}
+.icon-14 {
+    width: 14px;
+    height: 14px;
+    padding: 2px;
+}
+.icon-np {
+    padding: 0;
 }
