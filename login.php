@@ -19,7 +19,6 @@ if (!empty($_POST['user'])) {
     }
 }
 ?>
-<?= (!empty($base->GetLoginError()) ? '<h1 style="color:red">' . $error_msg[$base->GetLoginError()] . '</h1>' : ''); ?>
 <style>
     #form-login-container {
         -webkit-box-shadow: 0px 0px 10px 5px rgba(188,188,188,1);
@@ -45,3 +44,9 @@ if (!empty($_POST['user'])) {
         </form>
     </div>
 </div>
+
+<?php if (!empty($base->GetLoginError())): ?>
+    <script>
+        $.fancybox.open('<div class="message"><span style="font-size: 18px; color: red"><?=($error_msg[$base->GetLoginError()])?></span></div>');
+    </script>
+<?php endif; ?>

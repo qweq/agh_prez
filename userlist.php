@@ -51,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $sql = "SELECT * FROM ".$base::db.".user WHERE 1";
+                <?php $sql = "SELECT * FROM ".$base::db.".user WHERE u_delete = 0";
                 $result = $mysqli->query($sql);
                 while ($row = $result->fetch_assoc()): ?>
                     <tr>
@@ -60,7 +60,10 @@
                         <td><?=$row['u_firstname']?></td>
                         <td><?=$row['u_lastname']?></td>
                         <td><?=$row['u_email']?></td>
-                        <td>X</td>
+                        <td>
+                            <a href="adduser.php?id=<?=$row['u_id']?>" data-fancybox><img src="images/icons/edit.svg" class="icon-14 icon-np" title="Edit"></a>
+                            <a href="#" onclick="userDelete(<?=$row['u_id']?>);"><img src="images/icons/x.svg" class="icon-14 icon-np"></a>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
@@ -96,4 +99,20 @@
 
         });
     });
+
+    function userDelete(id) {
+        let sure = confirm('Are you sure you want to delete this user?');
+        if (sure) {
+            $.ajax({
+                url: 'include/ajax/proc.php',
+                type: 'POST',
+                data: {
+                    type: 'userlist_delete_user',
+                    id: id,
+                }
+            }).done(function() {
+                show('userlist');
+            });
+        }
+    }
 </script>

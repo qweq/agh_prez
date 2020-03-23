@@ -106,4 +106,8 @@ class Base {
 
         return $this->mysqli->UpdateRow($this::db, 'user', $u_id, $user_array);
     }
+
+    public function UserDelete($u_id) {
+        return $this->mysqli->UpdateRow($this::db, 'user', $u_id, array('u_delete' => 'NOW()'));
+    }
 }

@@ -10,3 +10,7 @@ if ($type == 'adduser_generate_username') {
     } while ($exists);
     echo $username;
 }
+
+if ($type == 'userlist_delete_user') {
+    $base->UserDelete($_POST['id']);
+}
